@@ -7,3 +7,4 @@ stash test TEXT
 good
 
 pull test
+fetch test

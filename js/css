@@ -1,0 +1,81 @@
+#id
+.classname
+
+[type]
+[type=value]
+[type^=vaule]       // 속성값이 value로 시작
+[type$=value]       // 속성값이 value로 끝
+[type~=value]       // 속성값 중에 value가 존재(완전일치)
+[type*=value]       // 속성값 중에 value를 포함하는 문자열을 가진 요소
+[type!=value]       // 불일치 요소
+
+:nth-child(n)           // n번째 자식요소
+:nth-child(2n)          // 짝수 번째 자식요소 모두, 2n -> even, 2n+1 -> odd
+:first-child            // 모두
+:nth-last-child(n)      // 뒤에서 시작하는 nth-child
+:last-child             // 모두
+:nth-of-type(n)         // 지정한 요소 전체 중에 n번째로 발견된 요소
+:first-of-type          // nth-of-type(1) 와 동일
+:nth-last-of-type(n)
+:last-of-type           // nth-last-of-type(1)와 동일
+:contains(str)          // 텍스트 노드에 str문자열을 포함하는 요소
+:only-child             // 형제노드가 없는 요소
+:empty                  // 하위노드가 없는 요소
+:not
+
+선택자
+body div        // space : 하위 모든 요소
+div > span      // > : 자식 노드(바로아래)의 모든요소
+div + span      // + : 다음 형제노드(nextSibling)
+div ~ p         // ~ : div이후에 있는 모든 형제요소 p 
+
+----------------------
+-webkit-~: 크롬, 사파리
+-moz-~: 파이어폭스
+-ms-~: 익스플로러
+-o-~: 오페라
+
+static: 문서 흐름대로(margin 등)
+relative: 문서 흐름(margin 등) + 상대적 위치(left, top 등)
+fixed: 보이는 화면에서의 절대 위치 (left, top 등)
+absolute: 부모 요소(static이 아닌)를 기준으로 한 상대적 위치 (left, top 등), 보통 body아래 구성 
+
+user-select: none       // 드래그 안됨
+
+// 트랜지션은 요소의 속성이 변하면 발생(특정 속성 listen)
+transition-property: all;   // listen할 속성 지정
+transition-duratiojn: 1s;
+transition-timing-function: ease-in-out;
+transition: all 1s ease-in-out;
+
+// 애니메이션은 키프레임과 세트로 작동
+@keyframes name{
+    from {
+        // ...
+    }
+
+    50% {
+        // ...
+    }
+
+    to{
+        // ...
+    }
+}
+
+animation-name : @keyframes 규칙을 이용하여 기술
+animation-duration : 한 싸이클 시간
+animation-delay : 로드 후 지연 시간
+animation-direction : 애니메이션이 종료 후 순방향, 역방향 지정
+    normal: 순반향
+    alternate: 순, 역 반복
+    reverse: 역박향
+    alternate-reverse: 역, 순 반복
+animation-iteration-count : 반복횟수. infinite: 무한 
+animation-play-state : 멈추거나, 다시 시작
+    running
+    paused
+animation-timing-function : @keyframes의 상태들의 시간간격
+    ease
+    ease-in-out
+animation-fill-mode : 애니메이션이 전후의 적용 값

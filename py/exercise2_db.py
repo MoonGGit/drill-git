@@ -47,7 +47,6 @@ for row in conn.execute('SELECT * FROM good'):
 import sqlalchemy as sa
 from sqlalchemy.ext.declarative import declarative_base
 conn = sa.create_engine('sqlite:///.good-orm.db')
-conn: sa.engine.Engine
 Base = declarative_base()
 Base: sa.schema.Table                       # 자동완성.
 
@@ -61,7 +60,7 @@ class Man(Base):
         self.age = age
 
     def __repr__(self):
-        return f'name : {name}, age : {age}'
+        return f'name : {self.name}, age : {self.age}'
 
 Base.metadata.create_all(conn)
 
@@ -77,7 +76,6 @@ session.commit()
 for row in session.execute('SELECT * FROM man'):
     print(row)
 session.close()
-
 
 --------------------------------------------------------------------------------
 Redis 259p, 342p, 349p(pub, sub - 기타.. zmq, RabbitMQ)
